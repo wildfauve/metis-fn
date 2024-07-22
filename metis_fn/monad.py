@@ -85,7 +85,9 @@ def monadic_try(name: str = None,
 
                 error_result = Left(ex_cls(message=str(e),
                                            name=(kwargs.get('name', None) or name or fn.__name__),
-                                           code=status, klass=str(e.__class__),
+                                           code=status,
+                                           klass=str(e.__class__),
+                                           exception_klass=e,
                                            traceback=traceback.format_exc())) if ex_cls else Left(str(e))
 
                 return_fn = kwargs.get('error_result_fn', error_result_fn)

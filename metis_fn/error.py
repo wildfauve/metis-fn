@@ -8,6 +8,7 @@ class BaseError(Exception):
                  traceback=None,
                  code=500,
                  klass="",
+                 exception_klass=None,
                  retryable=False):
         self.code = 500 if code is None else code
         self.retryable = retryable
@@ -15,6 +16,7 @@ class BaseError(Exception):
         self.name = name
         self.ctx = ctx
         self.klass = klass
+        self.exception_klass = exception_klass
         self.traceback = traceback
         self.request_kwargs = request_kwargs
         super().__init__(self.message)
